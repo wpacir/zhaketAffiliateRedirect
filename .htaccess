@@ -1,0 +1,11 @@
+RewriteEngine On
+
+# ۱ ریدایرکت دامنه قدیمی به دامنه اصلی همراه با افیلیت
+RewriteCond %{HTTP_HOST} ^(www\.)?zhaket\.wp-ac\.ir$ [NC]
+RewriteCond %{QUERY_STRING} !affid=AF-6133313a9bfa8 [NC]
+RewriteRule ^(.*)$ https://www.zhaket.com/$1?affid=AF-6133313a9bfa8 [R=301,L,QSA]
+
+# ۲ اگر روی خود zhaket.com بود و افیلیت نداشت افیلیت اضافه شود
+RewriteCond %{HTTP_HOST} ^(www\.)?zhaket\.com$ [NC]
+RewriteCond %{QUERY_STRING} !affid=AF-6133313a9bfa8 [NC]
+RewriteRule ^(.*)$ https://www.zhaket.com/$1?affid=AF-6133313a9bfa8 [R=301,L,QSA]
